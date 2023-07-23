@@ -67,6 +67,9 @@ class CustomDict(dict):
             self[key] = default
         return self[key]
 
+    def pullrequest(self):
+        print("hello this is pull request")
+
 
 # custom_dict = CustomDict({'key1': 'value1', 'key2': 'value2'})
 #
