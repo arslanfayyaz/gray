@@ -4,6 +4,7 @@ class CustomDict(dict):
 
     def update(self, *args, **kwargs):
         if args:
+
             if len(args) > 1:
                 raise TypeError("update expected at most 1 arguments, got %d" % len(args))
 
@@ -13,6 +14,7 @@ class CustomDict(dict):
                 self[key] = other[key]
 
     def __setitem__(self, key, value):
+
         if not isinstance(key, (str, int)):
             raise TypeError('key must be a string or an integer')
 
@@ -22,12 +24,14 @@ class CustomDict(dict):
         dict.__setitem__(self, key, value)
 
     def __getitem__(self, key):
+
         if key not in self:
             raise KeyError('key not found: %s' % key)
 
         return dict.__getitem__(self, key)
 
     def __delitem__(self, key):
+
         if not isinstance(key, int):
             raise TypeError('key must be an integer')
 
@@ -40,10 +44,12 @@ class CustomDict(dict):
         return dict.values(self)
 
     def pop(self, key, default=None):
+
         if not isinstance(key, (str, int)):
             raise TypeError('key must be a string or an integer')
 
         if key not in self:
+
             if default is not None:
                 return default
 
@@ -60,6 +66,7 @@ class CustomDict(dict):
         return CustomDict(self)
 
     def setdefault(self, key, default=None):
+
         if key not in self:
             self[key] = default
 
